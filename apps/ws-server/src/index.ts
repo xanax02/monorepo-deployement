@@ -6,11 +6,11 @@ const wss = new WebSocketServer({
 });
 
 wss.on("connection", async (socket) => {
-    const user = await prismaClient.users.create({
-        data: {
-            username: Math.random().toString(),
-            password: Math.random().toString()
-        }
-    })
+    // const user = await prismaClient.users.create({
+    //     data: {
+    //         username: Math.random().toString(),
+    //         password: Math.random().toString()
+    //     }
+    // })
     socket.send("hi there you are connected to the server")
 })

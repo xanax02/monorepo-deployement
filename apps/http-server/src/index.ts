@@ -1,5 +1,5 @@
 import  express from "express";
-import { prismaClient } from "@repo/db/client";
+// import { prismaClient } from "@repo/db/client";
 
 
 const app = express();
@@ -14,22 +14,26 @@ app.post("/signup", async(req, res) => {
     const username = req.body.username;
     const password = req.body.password;
 
-    const user = await prismaClient.users.create({
-        data: {
-            username: username,
-            password: password
-        }
-    })
+    // const user = await prismaClient.users.create({
+    //     data: {
+    //         username: username,
+    //         password: password
+    //     }
+    // })
 
+
+    // res.json({
+    //     message: "signup successfull!",
+    //     id:user.id
+    // })
 
     res.json({
-        message: "signup successfull!",
-        id:user.id
+        message: "signup successfull!"
     })
 })
 
 
 app.listen(3002, () => {
-    console.log("server listening on the port 3000");
+    console.log("server listening on the port 3002");
 
 })
