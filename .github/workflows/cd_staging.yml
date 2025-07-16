@@ -20,9 +20,10 @@ jobs:
 
       - name: deploy staging
         run: |
-          ssh -i ~/.ssh/id_rsa ubuntu@51.21.220.237
-          cd /home/ubuntu/mono-staging
-          npm i -g pnpm
-          pnpm install
-          pnpm run build
-          pm2 restart all
+          ssh -i ~/.ssh/id_rsa ubuntu@51.21.220.237 << 'EOF'
+            cd /home/ubuntu/mono-staging/
+            npm i -g pnpm
+            pnpm install
+            pnpm run build
+            pm2 restart all
+          EOF 
