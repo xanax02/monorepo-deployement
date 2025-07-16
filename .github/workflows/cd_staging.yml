@@ -1,0 +1,17 @@
+name: Deploy to staging
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy_monorep:
+    name: Deploying the monorepo to staging
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: set up ssh
+        run: |
+          echo "${{secrets.SSH_PRIVATE_KEY}}" &> ~/.ssh/id_rsa
+          ssh -i ~/ssh_key root@51.21.220.237

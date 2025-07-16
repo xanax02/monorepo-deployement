@@ -1,0 +1,23 @@
+name: Deploy to staging
+
+on:
+  push:
+    branches:
+      - production
+
+jobs:
+  deploy_monorep:
+    name: Deploying the monorepo to staging
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: SSH Into staging server
+        run: |
+          echo "${{secrets.SSH_PRIVATE_KEY}}" &> ~/ssh_key
+          ssh -i ~/ssh_key root@51.21.220.237 -t "
+          chmod 600 ~/ssh_key
+          cd mono-staging && git pull
+          npm i -g pnpm
+          pnpm install
+          pnpm run build
+          pm2 restart all"
