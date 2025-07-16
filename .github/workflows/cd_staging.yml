@@ -13,5 +13,6 @@ jobs:
     steps:
       - name: set up ssh
         run: |
+          mkdir -p ~/.ssh
           echo "${{secrets.SSH_PRIVATE_KEY}}" &> ~/.ssh/id_rsa
           ssh -i ~/ssh_key root@51.21.220.237
