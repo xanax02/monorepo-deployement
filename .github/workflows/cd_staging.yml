@@ -20,7 +20,7 @@ jobs:
 
       - name: deploy staging
         run: |
-          ssh -i ~/.ssh/id_rsa ubuntu@13.49.246.178 <<-'EOF'
+          ssh -i ~/.ssh/id_rsa ubuntu@13.49.246.178 << 'EOF'
           export NVM_DIR="$HOME/.nvm"
           [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" 
           [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" 
@@ -29,4 +29,4 @@ jobs:
           pnpm install
           pnpm run build
           pm2 restart all
-        EOF 
+          EOF
